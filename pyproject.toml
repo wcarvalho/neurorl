@@ -1,0 +1,40 @@
+[project]
+name = "neurorl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Wilka Carvalho", email = "wcarvalho92@gmail.com" },
+    { name = "Alexander Cai", email = "alexandercai@outlook.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "dm-acme[jax]",
+    "dm-launchpad[tensorflow]>=0.5.2",
+    "dm-sonnet>=2.0.2",
+    "gym>=0.26.2",
+    "matplotlib>=3.10.3",
+    "mctx>=0.0.5",
+    "ray[tune]>=2.46.0",
+]
+
+[project.scripts]
+neurorl = "neurorl:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = true
+override-dependencies = [ "numpy==1.23.5", "scipy==1.12.0", "dm-haiku==0.0.10" ]
+
+[[tool.uv.index]]
+name = "jax"
+url = "https://us-python.pkg.dev/ml-oss-artifacts-published/jax/simple/"
+
+[tool.uv.sources]
+dm-acme = { git = "https://github.com/google-deepmind/acme.git", rev = "0be0d4f" }
+
+[tool.setuptools]
+packages = [ "configs", "envs", "library", "td_agents" ]
